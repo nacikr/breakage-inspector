@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Breakage Inspector",
+  "version": "0.5.1",
+  "description": "Shows blocked requests and JavaScript errors on the current tab, and blocks URLs on demand.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Breakage Inspector"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["webRequest", "webNavigation", "storage", "declarativeNetRequest"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["page-hook.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

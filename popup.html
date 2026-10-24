@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Breakage Inspector</title>
+  <style>
+    body { width: 380px; font: 13px/1.4 system-ui, sans-serif; margin: 12px; }
+    h1 { font-size: 16px; margin: 0 0 8px; }
+    h2 { font-size: 13px; margin: 12px 0 6px; text-transform: uppercase; color: #666; }
+    form { display: flex; gap: 6px; }
+    input { flex: 1; padding: 4px 6px; font: inherit; }
+    button { font: inherit; cursor: pointer; }
+    #rule-list { list-style: none; padding: 0; margin: 6px 0 0; }
+    #rule-list li { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 3px 0; word-break: break-all; }
+    .error { color: #a1181d; margin: 6px 0 0; }
+    .hint { color: #888; font-size: 11px; margin: 4px 0 0; }
+  </style>
+</head>
+<body>
+  <h1>Breakage Inspector</h1>
+
+  <h2>Block on this tab</h2>
+  <form id="block-form">
+    <input id="pattern" placeholder="e.g. fingerprintjs2.js" autocomplete="off">
+    <button type="submit">Block + reload</button>
+  </form>
+  <p class="hint">Any URL containing this text is blocked, on this tab only.</p>
+  <p id="rule-error" class="error" hidden></p>
+  <ul id="rule-list"></ul>
+
+  <h2>Captured</h2>
+  <breakage-list></breakage-list>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
